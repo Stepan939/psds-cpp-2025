@@ -1,18 +1,53 @@
-#include <cstdint>
-#include <stdexcept>
-
-
-enum class CheckFlags : uint8_t {
-    NONE = 0,
-    TIME = (1 << 0),
-    DATE = (1 << 1),
-    USER = (1 << 2),
-    CERT = (1 << 3),
-    KEYS = (1 << 4),
-    DEST = (1 << 5),
-    ALL = TIME | DATE | USER | CERT | KEYS | DEST
-};
+#include <iostream>
+#include <string>
 
 void PrintCheckFlags(CheckFlags flags) {
-    throw std::runtime_error{"Not implemented"};
+    
+    if (flags < NO_CHECKS || flags > ALL_CHECKS) {
+        std::cout << "[]";
+        return;
+    }
+    
+   
+    if (flags == NO_CHECKS) {
+        std::cout << "[]";
+        return;
+    }
+    
+    std::string result = "[";
+    bool first = true;
+    
+  
+    if (flags & CHECK_SYNTAX) {
+        if (!first) result += ",";
+        result += "CHECK_SYNTAX";
+        first = false;
+    }
+    
+    if (flags & CHECK_TYPES) {
+        if (!first) result += ",";
+        result += "CHECK_TYPES";
+        first = false;
+    }
+    
+    if (flags & CHECK_STYLE) {
+        if (!first) result += ",";
+        result += "CHECK_STYLE";
+        first = false;
+    }
+    
+    if (flags & CHECK_PERFORMANCE) {
+        if (!first) result += ",";
+        result += "CHECK_PERFORMANCE";
+        first = false;
+    }
+    
+    if (flags & CHECK_SECURITY) {
+        if (!first) result += ",";
+        result += "CHECK_SECURITY";
+        first = false;
+    }
+    
+    result += "]";
+    std::cout << result;
 }
