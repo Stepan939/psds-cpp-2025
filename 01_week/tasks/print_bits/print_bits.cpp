@@ -1,7 +1,32 @@
-#include <cstddef>
-#include <stdexcept>
+#include <iostream>
+#include <bitset>
+#include <climits>
 
+void PrintBits(int64_t number, size_t bytes) {
 
-void PrintBits(long long value, size_t bytes) {
-    throw std::runtime_error{"Not implemented"};
+    if (bytes == 0 || bytes > 8) {
+        return;
+    }
+    
+    
+    size_t bits = bytes * 8;
+    
+    
+    std::bitset<64> bitset(number);
+    
+  
+    std::cout << "0b";
+    
+  
+    for (int i = bits - 1; i >= 0; --i) {
+        std::cout << bitset[i];
+        
+        
+        if (i > 0 && i % 8 == 0) {
+            std::cout << "'";
+        }
+    }
+    
+
+    std::cout << std::endl;
 }
