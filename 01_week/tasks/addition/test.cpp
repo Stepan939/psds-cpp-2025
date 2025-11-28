@@ -4,7 +4,7 @@
 #include <type_traits>
 #include <stdexcept>
 
-#include "addition.cpp"
+#include "addition.h"
 
 TEST(AdditionTest, FunctionSignature) {
     static_assert(std::is_same_v<decltype(&Addition), int64_t (*)(int, int)>,
