@@ -74,3 +74,4 @@ constexpr double operator"" _m_to_in(long double meters) {
 constexpr double operator"" _m_to_cm(long double meters) {
     return static_cast<double>(meters * 100.0);
 }
+
